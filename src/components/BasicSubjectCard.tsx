@@ -17,13 +17,13 @@ interface BasicSubjectCardProps {
 
 export default function BasicSubjectCard(props: BasicSubjectCardProps) {
   return (
-    <Section>
+    <Section className="max-[426px]:flex-col max-[426px]:gap-2">
       <Section className="flex-1/2">
         <Image src={props.src} alt={props.alt} className="w-full h-[40rem]" />
       </Section>
       <Section
         layout="col"
-        className="flex-1/2 justify-center items-center relative"
+        className="flex-1/2 justify-center items-center relative max-[426px]:items-start"
       >
         <Section layout="col" className="w-[80%] gap-7">
           <Text size="md" className="font-medium !text-[var(--black)]">

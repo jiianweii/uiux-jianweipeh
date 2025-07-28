@@ -17,7 +17,7 @@ export default function BasicESBCard({
         layout="col"
         className="w-[70%] justify-center items-center  gap-4"
       >
-        <Text size="xs" className="!text-[var(--black)]">
+        <Text size="xs" className="!text-[var(--black)] text-center">
           {children}
         </Text>
 

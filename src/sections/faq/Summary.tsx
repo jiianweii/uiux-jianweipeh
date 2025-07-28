@@ -6,13 +6,13 @@ import Typography from "../../components/Typography";
 
 export default function Summary() {
   return (
-    <Section className="h-[80svh] mb-[20rem] relative">
+    <Section className="h-[80svh] mb-[20rem] relative max-[426px]:flex-col-reverse">
       <Section
         layout="col"
         className="flex-1/2 justify-center items-center relative"
       >
         <Section layout="col" className="w-[80%] gap-4">
-          <HeaderText size="sm" className="leading-18">
+          <HeaderText size="sm" className="leading-18 max-[426px]:text-[3rem]">
             What is it like being a student at Ancourage?
           </HeaderText>
           <Text size="sm">
@@ -28,7 +28,7 @@ export default function Summary() {
           className="w-[80%]"
         />
       </Section>
-      <Typography className="absolute bottom-[-30%] left-20">
+      <Typography className="absolute bottom-[-30%] left-20 max-[426px]:text-[8rem] max-[426px]:bottom-[-30%]">
         questions
       </Typography>
     </Section>

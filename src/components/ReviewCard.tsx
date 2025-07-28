@@ -1,41 +1,65 @@
+import { Link } from "@tanstack/react-router";
 import Image from "./Image";
 import Section from "./Section";
 import Text from "./Text";
 import { Icon } from "@iconify/react";
 
-export default function ReviewCard() {
+interface ReviewCardProps {
+  src?: string;
+  name: string;
+  ratings: number;
+  content: string;
+  url: string;
+}
+
+export default function ReviewCard({
+  src,
+  name,
+  ratings,
+  content,
+  url,
+}: ReviewCardProps) {
+  const contentArr = content.split(" ");
+  const newContent = contentArr.slice(0, 30).join(" ");
+
   return (
     <Section
       layout="col"
-      className="min-w-[30rem] rounded-[16px] justify-around bg-[var(--white)] p-8 shadow-[2px_4px_4px_#00000025] gap-4"
+      className="rounded-[16px] justify-around bg-[var(--white)] p-8 shadow-[2px_4px_4px_#00000025] gap-4"
     >
       <Section className="items-center gap-x-4">
-        <div className="rounded-full size-10 bg-[var(--charcoal)] overflow-hidden">
-          <Image
-            src="/tutors/min.png"
-            alt={"Photo of user "}
-            className="size-full"
-          />
+        <div className="flex rounded-full size-10 bg-[var(--charcoal)] overflow-hidden justify-center items-center">
+          {src ? (
+            <Image src={src} alt={"Photo of " + name} className="size-full" />
+          ) : (
+            <Text size="xs" className="!text-[var(--white)]">
+              {name[0]}
+            </Text>
+          )}
         </div>
-        <Text size="sm">Joseph A</Text>
+        <Text size="xs" className="max-[1025px]:text-[1rem]">
+          {name}
+        </Text>
         <Section className="gap-x-0.5">
-          {[...Array(5)].map(() => (
+          {[...Array(ratings)].map(() => (
             <Icon
               icon="material-symbols:star"
               color="var(--teal)"
-              className="text-[1.5rem]"
+              className="text-[1.5rem] max-[1025px]:text-[1rem]"
             />
           ))}
         </Section>
       </Section>
 
       <Section layout="col" className="h-[60%] gap-4">
-        <Text size="xxs">
-          “Ancourage has the warmest and friendliest teachers! The atmosphere is
-          so conducive and comfortable for children to learn in. For student
-          care, the teachers are respectful and caring towards every child’s
-          needs. They also hold fun activities to build various life skills in
-          children.”
+        <Text size="xxs" className="max-[1025px]:text-[.9rem]">
+          {content.split(" ").length > 29 ? (
+            <>
+              {newContent}...<Link to={url}>Read More</Link>
+            </>
+          ) : (
+            content
+          )}
         </Text>
       </Section>
     </Section>

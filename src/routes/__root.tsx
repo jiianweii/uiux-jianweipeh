@@ -3,6 +3,8 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import Navigation from "../ui/Navigation";
 import Footer from "../ui/Footer";
 import { useEffect } from "react";
+import NavBarProvider from "../providers/NavBarProvider";
+import Main from "../ui/Main";
 
 export const Route = createRootRoute({
   component: Layout,
@@ -16,13 +18,15 @@ export function Layout() {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-svh w-full">
-      <Navigation />
-
-      <Outlet />
-
-      <Footer />
-      <TanStackRouterDevtools />
-    </div>
+    <NavBarProvider>
+      <div className="min-h-svh w-full">
+        <Navigation />
+        <Main>
+          <Outlet />
+        </Main>
+        <Footer />
+        <TanStackRouterDevtools />
+      </div>
+    </NavBarProvider>
   );
 }

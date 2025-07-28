@@ -1,8 +1,8 @@
 import NavLink from "./NavLink";
 
-export default function NavLinks() {
+export default function NavLinks({ className }: { className: string }) {
   return (
-    <div className="flex gap-18">
+    <div className={className}>
       <NavLink to="/about">About Us</NavLink>
       <NavLink to="/classes">Classes</NavLink>
       <NavLink to="/arts">Arts</NavLink>

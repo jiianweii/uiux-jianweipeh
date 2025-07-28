@@ -7,16 +7,19 @@ import { Icon } from "@iconify/react";
 
 export default function ContactUs() {
   return (
-    <Section className="h-svh items-center px-20">
+    <Section className="h-svh items-center px-20 max-[426px]:flex-col">
       <Section className="flex-1/2 justify-center">
         <Image
           src="/Ancourage-Academy-Outdoor-Signboard-Logo-1.jpg"
           alt="Ancourage-Academy-Outdoor-Signboard-Logo-1"
-          className="size-[80%]"
+          className="size-[80%] max-[426px]:size-full"
         />
       </Section>
       <Section className="flex-1/2 justify-center">
-        <Section layout="col" className="size-[60%] gap-8">
+        <Section
+          layout="col"
+          className="size-[60%] gap-8 max-[426px]:size-full"
+        >
           <HeaderText size="sm" className="leading-18">
             Have more questions to ask?
           </HeaderText>

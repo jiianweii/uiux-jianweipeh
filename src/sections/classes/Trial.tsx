@@ -6,7 +6,7 @@ import Button from "../../components/Button";
 
 export default function Trial() {
   return (
-    <Section className="h-svh">
+    <Section className="h-svh max-[426px]:flex-col-reverse">
       <Section
         layout="col"
         className="flex-1/2 justify-center items-center relative"
@@ -24,7 +24,11 @@ export default function Trial() {
         </Section>
       </Section>
       <Section className="flex-1/2">
-        <Image src="/image15.png" alt="Small group of students drawing" />
+        <Image
+          src="/image15.png"
+          alt="Small group of students drawing"
+          className="max-[426px]:w-full"
+        />
       </Section>
     </Section>
   );

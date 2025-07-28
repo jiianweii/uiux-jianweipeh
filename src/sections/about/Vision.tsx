@@ -6,12 +6,12 @@ import Typography from "../../components/Typography";
 
 export default function Vision() {
   return (
-    <Section className="h-svh">
+    <Section className="min-h-svh max-[769px]:flex-col-reverse">
       <Section
         layout="col"
-        className="flex-1/2 justify-center items-center relative"
+        className="flex-1/2 justify-center items-center relative overflow-hidden"
       >
-        <div className="w-[80%]">
+        <div className="w-[80%] max-[769px]:h-[60svh]">
           <HeaderText size="sm">Our Vision</HeaderText>
           <Text size="sm">
             We envision a transformative approach to education that goes beyond
@@ -22,12 +22,16 @@ export default function Vision() {
             teaching methods empower students to reach their full potential.
           </Text>
         </div>
-        <Typography className="absolute bottom-[-10%] right-20">
+        <Typography className="absolute bottom-[-15%] right-20 max-[769px]:text-[15rem] max-[426px]:text-[8rem] max-[321px]:text-[6rem] max-[376px]:text-[7rem] max-[700px]:text-[13rem] max-[700px]:bottom-[-10%] max-[426px]:bottom-[-5%]">
           vision
         </Typography>
       </Section>
       <Section className="flex-1/2">
-        <Image src="/IMG_7897-scaled.jpg" alt="Photo of Julius Caesar?" />
+        <Image
+          src="/IMG_7897-scaled.jpg"
+          alt="Photo of Julius Caesar?"
+          className="size-full"
+        />
       </Section>
     </Section>
   );

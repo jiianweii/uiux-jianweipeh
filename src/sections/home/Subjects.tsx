@@ -9,7 +9,7 @@ export default function Subjects() {
       className="min-h-[60svh] justify-center items-center gap-16"
     >
       <HeaderText size="xs">Courses We Offer</HeaderText>
-      <div className="grid grid-cols-4 gap-4 px-16">
+      <div className="grid grid-cols-4 gap-4 px-16 max-[1024px]:grid-cols-2 max-[425px]:grid-cols-1">
         <SubjectCard
           icon="majesticons:calculator"
           subject="Mathematics"

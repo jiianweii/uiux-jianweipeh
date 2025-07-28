@@ -10,7 +10,7 @@ export default function TechniqueCard({ title, content }: TechniqueCardProps) {
   return (
     <Section
       layout="col"
-      className="h-full w-[30rem] justify-around bg-[var(--white)] p-8 shadow-[2px_4px_4px_#00000025]"
+      className="h-full w-[30rem] justify-around bg-[var(--white)] gap-y-8 p-8 shadow-[2px_4px_4px_#00000025]"
     >
       <div className="border-l-4 border-[var(--teal)] px-4">
         <Text size="sm">{title}</Text>

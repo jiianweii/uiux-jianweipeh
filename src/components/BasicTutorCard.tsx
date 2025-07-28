@@ -11,15 +11,21 @@ interface BasicTutorCard {
 
 export default function BasicTutorCard(props: BasicTutorCard) {
   return (
-    <Section layout="col" className="size-[80%] gap-2">
+    <Section layout="col" className="size-[80%] gap-2 max-[769px]:size-full">
       <div>
-        <Image src={props.src} alt={props.alt} className="h-[250px] w-full" />
+        <Image
+          src={props.src}
+          alt={props.alt}
+          className="h-[250px] max-[769px]:h-[400px] max-[376px]:h-[200px] w-full"
+        />
       </div>
 
-      <Text size="xs" className="font-semibold">
+      <Text size="xs" className="font-semibold max-[769px]:text-[2rem]">
         {props.name}
       </Text>
-      <p className="text-[0.8rem] font-light">{props.info}</p>
+      <p className="text-[0.8rem] font-light max-[769px]:text-[1.5rem]">
+        {props.info}
+      </p>
     </Section>
   );
 }

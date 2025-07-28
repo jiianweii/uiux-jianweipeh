@@ -1,16 +1,19 @@
-import { useRef, useState } from "react";
 import Section from "../../components/Section";
 import HeaderText from "../../components/HeaderText";
+import { useEffect, useState } from "react";
+import { Icon } from "@iconify/react/dist/iconify.js";
 import Image from "../../components/Image";
 
-export default function StudentsWork() {
-  const slideRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const mouseCoords = useRef({
-    startX: 0,
-    scrollLeft: 0,
-  });
+type imagesType = {
+  id: number;
+  src: string;
+  alt: string;
+};
 
+export default function StudentsWork() {
+  const [steps, setSteps] = useState(3);
+  const [currentCount, setCurrentCount] = useState(0);
+  const [currentImages, setCurrentImages] = useState<imagesType[]>([]);
   const images = [
     {
       id: 1,
@@ -74,70 +77,51 @@ export default function StudentsWork() {
     },
   ];
 
-  const HandleMouseLeave = () => {
-    setIsDragging(false);
-    ChangeCarouselIndex();
-  };
-
-  const HandleMouseDown = (e) => {
-    setIsDragging(true);
-    const startX = e.pageX - slideRef.current.offsetLeft;
-    const scrollLeft = slideRef.current.scrollLeft;
-    mouseCoords.current = { startX, scrollLeft };
-  };
-
-  const HandleMouseMove = (e) => {
-    if (!isDragging) return;
-    e.preventDefault();
-    const x = e.pageX - slideRef.current.offsetLeft;
-    const walkX = (x - mouseCoords.current.startX) * 1.5;
-    slideRef.current.scrollLeft = mouseCoords.current.scrollLeft - walkX;
-  };
-
-  const HandleMouseUp = () => {
-    setIsDragging(false);
-    ChangeCarouselIndex();
-  };
-
-  const ChangeCarouselIndex = () => {
-    const container = slideRef.current;
-    const itemWidth = container.children[0].offsetWidth + 20; // item width + margin
-    const scrollPosition = container.scrollLeft;
-    const index = Math.round(scrollPosition / itemWidth);
-
-    container.scrollTo({
-      left: index * itemWidth,
-      behavior: "smooth",
-    });
-  };
+  useEffect(() => {
+    setCurrentImages(images.slice(currentCount, currentCount + steps));
+  }, [currentCount]);
 
   return (
     <Section layout="col" className="justify-center px-20">
-      <HeaderText size="md">student's works</HeaderText>
-      <div className="relative w-full overflow-hidden">
-        <div
-          ref={slideRef}
-          className="flex gap-5 overflow-x-hidden scrollbar-hide cursor-grab select-none"
-          onMouseDown={HandleMouseDown}
-          onMouseLeave={HandleMouseLeave}
-          onMouseUp={HandleMouseUp}
-          onMouseMove={HandleMouseMove}
-          style={{ cursor: isDragging ? "grabbing" : "grab" }}
-        >
-          {images.map((image) => (
-            <div
-              key={image.id}
-              className="flex-shrink-0 w-[calc(33.33%-13.33px)]" // Show 3 images at a time (33.33% width each minus gap)
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-auto object-cover rounded-lg"
-              />
-            </div>
+      <HeaderText
+        size="md"
+        className="max-[768px]:text-[5rem] max-[426px]:text-[4rem] max-[375px]:text-[3rem]"
+      >
+        student's works
+      </HeaderText>
+      <Section className="h-full w-full col-span-7 z-10 py-5">
+        <div className="grid grid-cols-3 gap-5 p-2 relative">
+          <button
+            className="absolute top-[50%] left-0 size-10 ml-[-10px] bg-[var(--teal)] rounded-full transform -translate-y-1/2"
+            onClick={() =>
+              setCurrentCount((curr) =>
+                curr - (steps - 1) < 0 ? images.length - steps : curr - steps
+              )
+            }
+          >
+            <Icon
+              icon="formkit:arrowleft"
+              color="var(--white)"
+              className="text-[.8rem] justify-self-center"
+            />
+          </button>
+          <button
+            className="absolute top-[50%] right-0 mr-[-10px] size-10 bg-[var(--teal)] rounded-full transform -translate-y-1/2"
+            onClick={() =>
+              setCurrentCount((curr) => (curr + steps) % images.length)
+            }
+          >
+            <Icon
+              icon="formkit:arrowright"
+              color="var(--white)"
+              className="text-[.8rem] justify-self-center"
+            />
+          </button>
+          {currentImages.map((image) => (
+            <Image src={image.src} alt={image.alt} className="size-full" />
           ))}
         </div>
-      </div>
+      </Section>
     </Section>
   );
 }

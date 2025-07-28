@@ -4,7 +4,7 @@ import Section from "../../components/Section";
 
 export default function SubjectList() {
   return (
-    <Section layout="col" className="px-20 gap-20">
+    <Section layout="col" className="px-20 gap-20 max-[426px]:px-10">
       <BasicSubjectCard
         src="/art/prefProfArt.jpg"
         alt="Prep Professional Class Art"

@@ -6,7 +6,7 @@ import Typography from "../../components/Typography";
 
 export default function Summary() {
   return (
-    <Section className="h-[80svh] mb-[20rem] relative">
+    <Section className="h-[80svh] max-[426px]:h-svh max-[426px]:flex-col-reverse mb-[20rem] relative">
       <Section
         layout="col"
         className="flex-1/2 justify-center items-center relative"
@@ -23,7 +23,7 @@ export default function Summary() {
       <Section className="flex-1/2">
         <Image src="/artcourage.png" alt="Logo of Arts by Ancourage" />
       </Section>
-      <Typography className="absolute bottom-[-30%] left-20">
+      <Typography className="absolute bottom-[-30%] left-20 max-[426px]:text-[10rem] max-[426px]:bottom-[-20%]">
         classes
       </Typography>
     </Section>

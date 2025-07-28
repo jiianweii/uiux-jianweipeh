@@ -30,7 +30,7 @@ const ESBMethods = [
 
 export default function ESB() {
   return (
-    <Section className="h-[60svh] px-20 py-10 bg-[var(--beige)] justify-center items-center gap-x-8">
+    <Section className="h-[60svh] px-20 py-10 bg-[var(--beige)] justify-center items-center gap-8  max-[1024px]:h-auto  max-[1024px]:flex-col">
       {ESBMethods.map((method) => (
         <TechniqueCard {...method} />
       ))}

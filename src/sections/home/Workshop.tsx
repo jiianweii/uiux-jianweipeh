@@ -8,11 +8,14 @@ export default function Workshop() {
   return (
     <Section
       layout="col"
-      className="h-[60svh] justify-between bg-[var(--beige)] px-20 pt-20 relative overflow-hidden"
+      className="h-[60svh] justify-between bg-[var(--beige)] px-20 pt-20 relative overflow-hidden max-[426px]:h-[60svh]"
     >
-      <Section>
+      <Section className=" max-[769px]:flex-col gap-y-5">
         <Section className="w-full">
-          <HeaderText size="md" className="mt-[-30px] leading-28">
+          <HeaderText
+            size="md"
+            className="mt-[-30px] leading-18 max-[426px]:text-[4rem]"
+          >
             Interested in our workshops?
           </HeaderText>
         </Section>
@@ -28,7 +31,7 @@ export default function Workshop() {
         </Section>
       </Section>
 
-      <Typography className="absolute bottom-[-15%] right-20">
+      <Typography className="absolute bottom-[-15%] right-20 max-[769px]:text-[15rem] max-[426px]:text-[8rem] max-[321px]:text-[6rem] max-[376px]:text-[7rem] max-[700px]:text-[13rem] max-[700px]:bottom-[-10%] max-[426px]:bottom-[-5%]">
         workshops
       </Typography>
     </Section>
