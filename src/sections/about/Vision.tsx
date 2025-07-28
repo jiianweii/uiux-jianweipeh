@@ -9,7 +9,7 @@ export default function Vision() {
     <Section className="min-h-svh max-[769px]:flex-col-reverse">
       <Section
         layout="col"
-        className="flex-1/2 justify-center items-center relative overflow-hidden"
+        className="flex-1/2 justify-center items-center relative max-[769px]:overflow-hidden"
       >
         <div className="w-[80%] max-[769px]:h-[60svh]">
           <HeaderText size="sm">Our Vision</HeaderText>

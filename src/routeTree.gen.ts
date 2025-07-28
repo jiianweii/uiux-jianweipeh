@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as NotFoundRouteImport } from './routes/notFound'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClassesRouteImport } from './routes/classes'
@@ -16,6 +17,11 @@ import { Route as ArtsRouteImport } from './routes/arts'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const NotFoundRoute = NotFoundRouteImport.update({
+  id: '/notFound',
+  path: '/notFound',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/notFound': typeof NotFoundRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/notFound': typeof NotFoundRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,13 +79,29 @@ export interface FileRoutesById {
   '/classes': typeof ClassesRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/notFound': typeof NotFoundRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/arts' | '/classes' | '/contact' | '/faq'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/arts'
+    | '/classes'
+    | '/contact'
+    | '/faq'
+    | '/notFound'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/arts' | '/classes' | '/contact' | '/faq'
-  id: '__root__' | '/' | '/about' | '/arts' | '/classes' | '/contact' | '/faq'
+  to: '/' | '/about' | '/arts' | '/classes' | '/contact' | '/faq' | '/notFound'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/arts'
+    | '/classes'
+    | '/contact'
+    | '/faq'
+    | '/notFound'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -87,10 +111,18 @@ export interface RootRouteChildren {
   ClassesRoute: typeof ClassesRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  NotFoundRoute: typeof NotFoundRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/notFound': {
+      id: '/notFound'
+      path: '/notFound'
+      fullPath: '/notFound'
+      preLoaderRoute: typeof NotFoundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/faq': {
       id: '/faq'
       path: '/faq'
@@ -143,6 +175,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClassesRoute: ClassesRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  NotFoundRoute: NotFoundRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

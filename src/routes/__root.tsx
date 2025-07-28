@@ -5,9 +5,11 @@ import Footer from "../ui/Footer";
 import { useEffect } from "react";
 import NavBarProvider from "../providers/NavBarProvider";
 import Main from "../ui/Main";
+import NotFound from "./notFound";
 
 export const Route = createRootRoute({
   component: Layout,
+  notFoundComponent: NotFound,
 });
 
 export function Layout() {
